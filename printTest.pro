@@ -30,9 +30,9 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../Dropbox/Documents/build-common-print-dialog-Desktop_Qt_5_8_0_GCC_64bit-Debug/release/ -lcpd
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../Dropbox/Documents/build-common-print-dialog-Desktop_Qt_5_8_0_GCC_64bit-Debug/debug/ -lcpd
-else:unix: LIBS += -L$$PWD/../../Dropbox/Documents/build-common-print-dialog-Desktop_Qt_5_8_0_GCC_64bit-Debug/ -lcpd
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/release/ -lcpd
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/debug/ -lcpd
+else:unix: LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/ -lcpd
 
-INCLUDEPATH += $$PWD/../../Dropbox/Documents/common-print-dialog
-DEPENDPATH += $$PWD/../../Dropbox/Documents/common-print-dialog
+INCLUDEPATH += $$PWD/../cpd
+DEPENDPATH += $$PWD/../cpd

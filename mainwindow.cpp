@@ -14,7 +14,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    cpd = new CPD(new QPrinter, Q_NULLPTR);
-    cpd->show();
-    ui->label->setText(cpd->information());
+    cpd = new QCpdWindow();
 }

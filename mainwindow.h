@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <cpd.h>
+#include "../cpd/headers/cpd.h"
 
 namespace Ui {
 class MainWindow;
@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    CPD *cpd;
+    QCpdWindow *cpd;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
