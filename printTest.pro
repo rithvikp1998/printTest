@@ -30,9 +30,12 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/release/ -lcpd
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/debug/ -lcpd
-else:unix: LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/ -lcpd
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/release/ -lcpd \
+                                              -L$$$$PWD/../../PrintDialog_Backend/src/ -lcpd
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/debug/ -lcpd \
+                                                 -L$$$$PWD/../../PrintDialog_Backend/src/ -lcpd
+else:unix: LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/ -lcpd \
+                   -L$$$$PWD/../../PrintDialog_Backend/src/ -lcpd
 
-INCLUDEPATH += $$PWD/../cpd
-DEPENDPATH += $$PWD/../cpd
+INCLUDEPATH += $$PWD/../cpd $$PWD/../../PrintDialog_Backend/src
+DEPENDPATH += $$PWD/../cpd $$PWD/../../PrintDialog_Backend/src

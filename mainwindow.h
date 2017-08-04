@@ -17,6 +17,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public Q_SLOT:
+    void closeEvent(QCloseEvent *event) override;
+
 private slots:
     void on_pushButton_clicked();
 

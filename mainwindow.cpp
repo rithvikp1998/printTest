@@ -16,3 +16,7 @@ void MainWindow::on_pushButton_clicked()
 {
     cpd = new QCpdWindow();
 }
+
+void MainWindow::closeEvent(QCloseEvent *event){
+    exit(0);
+}
