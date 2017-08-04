@@ -1,12 +1,13 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2017-07-20T17:06:33
-#
-#-------------------------------------------------
-
-QT       += core gui printsupport quickwidgets
+QT += core gui printsupport quickwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+CONFIG += c++11 no_keywords
+
+unix {
+    CONFIG += link_pkgconfig
+    PKGCONFIG += gio-unix-2.0 glib-2.0 gobject-2.0 poppler-qt5
+}
 
 TARGET = printTest
 TEMPLATE = app
@@ -30,12 +31,17 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/release/ -lcpd \
-                                              -L$$$$PWD/../../PrintDialog_Backend/src/ -lcpd
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/debug/ -lcpd \
-                                                 -L$$$$PWD/../../PrintDialog_Backend/src/ -lcpd
-else:unix: LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/ -lcpd \
-                   -L$$$$PWD/../../PrintDialog_Backend/src/ -lcpd
 
-INCLUDEPATH += $$PWD/../cpd $$PWD/../../PrintDialog_Backend/src
-DEPENDPATH += $$PWD/../cpd $$PWD/../../PrintDialog_Backend/src
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/release/ -lcpd
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/debug/ -lcpd
+else:unix: LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/ -lcpd
+
+INCLUDEPATH += $$PWD/../cpd
+DEPENDPATH += $$PWD/../cpd
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../cpd/backends/cups/src/release/ -lCPDFrontend
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../cpd/backends/cups/src/debug/ -lCPDFrontend
+else:unix: LIBS += -L$$PWD/../cpd/backends/cups/src/ -lCPDFrontend
+
+INCLUDEPATH += $$PWD/../cpd/backends/cups/src
+DEPENDPATH += $$PWD/../cpd/backends/cups/src

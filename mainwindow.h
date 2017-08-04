@@ -20,7 +20,7 @@ public:
 public Q_SLOT:
     void closeEvent(QCloseEvent *event) override;
 
-private slots:
+private Q_SLOTS:
     void on_pushButton_clicked();
 
 private:
