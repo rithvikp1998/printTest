@@ -33,7 +33,7 @@ HEADERS  += mainwindow.h
 FORMS    += mainwindow.ui
 
 BACKENDS_DIR = $$PWD/../cpd/backends
-LIBCPD_DIR = $$PWD/../cpd/build
+LIBCPD_DIR = $$PWD/../cpd/libs
 
 win32:CONFIG(release, debug|release): LIBS += -L$$LIBCPD_DIR/release/ -lcpd
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$LIBCPD_DIR/debug/ -lcpd
