@@ -11,6 +11,7 @@ unix {
 
 TARGET = printTest
 TEMPLATE = app
+DESTDIR = $$PWD/build
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
@@ -31,17 +32,19 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
+BACKENDS_DIR = $$PWD/../cpd/backends
+LIBCPD_DIR = $$PWD/../cpd/build
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/release/ -lcpd
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/debug/ -lcpd
-else:unix: LIBS += -L$$PWD/../build-cpd-Desktop_Qt_5_8_0_GCC_64bit-Debug/ -lcpd
+win32:CONFIG(release, debug|release): LIBS += -L$$LIBCPD_DIR/release/ -lcpd
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$LIBCPD_DIR/debug/ -lcpd
+else:unix: LIBS += -L$$LIBCPD_DIR/ -lcpd
 
-INCLUDEPATH += $$PWD/../cpd
-DEPENDPATH += $$PWD/../cpd
+INCLUDEPATH += $$LIBCPD_DIR/../
+DEPENDPATH += $$LIBCPD_DIR/../
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../cpd/backends/cups/src/release/ -lCPDFrontend
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../cpd/backends/cups/src/debug/ -lCPDFrontend
-else:unix: LIBS += -L$$PWD/../cpd/backends/cups/src/ -lCPDFrontend
+win32:CONFIG(release, debug|release): LIBS += -L$$BACKENDS_DIR/cups/src/release/ -lCPDFrontend
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$BACKENDS_DIR/cups/src/debug/ -lCPDFrontend
+else:unix: LIBS += -L$$BACKENDS_DIR/cups/src/ -lCPDFrontend
 
-INCLUDEPATH += $$PWD/../cpd/backends/cups/src
-DEPENDPATH += $$PWD/../cpd/backends/cups/src
+INCLUDEPATH += $$BACKENDS_DIR/cups/src
+DEPENDPATH += $$BACKENDS_DIR/cups/src
