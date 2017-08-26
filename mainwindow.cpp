@@ -18,5 +18,6 @@ void MainWindow::on_pushButton_clicked()
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){
+    event->accept();
     exit(0);
 }
